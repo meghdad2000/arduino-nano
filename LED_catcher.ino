@@ -4,6 +4,7 @@
  * user can connect D2 to 5v of arduino to give D2  5v input which is considered as button
  * every time user can push button on green LED he get a point
  * and LEDs will show his score
+ * if it stuck in goDown make D2 zero by connecting it to your hand
  */
 
 int score = 0, wait=85,pushed=-1;;
@@ -15,13 +16,13 @@ void setup() {
   pinMode(7,OUTPUT);
   pinMode(6,OUTPUT);
   pinMode(5,OUTPUT);
+  digitalWrite(2,LOW);
 }
 
 void loop() {
     pushed = goDown();
     pushed = goUp();
   if(pushed != -1){//buttun is pressed
-    Serial.println(score);
         if (pushed == 11){
           digitalWrite(2,LOW);
           digitalWrite(11,HIGH);
